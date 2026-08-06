@@ -1,0 +1,26 @@
+
+> knovis@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 515ms
+
+○ Compiling /follow ...
+ GET /follow 200 in 5.1s (next.js: 4.2s, proxy.ts: 302ms, application-code: 605ms)
+[browser] ⚠️ PostHog: No API key found. Add NEXT_PUBLIC_POSTHOG_KEY to .env.local and restart the server. (src/components/PostHogProvider.tsx:33:15)
+ GET / 200 in 1181ms (next.js: 1078ms, proxy.ts: 31ms, application-code: 71ms)
+ GET / 200 in 137ms (next.js: 9ms, proxy.ts: 9ms, application-code: 120ms)
+ GET /follow 200 in 161ms (next.js: 5ms, proxy.ts: 13ms, application-code: 143ms)
+[browser] ⚠️ PostHog: No API key found. Add NEXT_PUBLIC_POSTHOG_KEY to .env.local and restart the server. (src/components/PostHogProvider.tsx:33:15)
+ GET / 200 in 104ms (next.js: 4ms, proxy.ts: 8ms, application-code: 92ms)
+ GET /follow 200 in 118ms (next.js: 5ms, proxy.ts: 16ms, application-code: 97ms)
+[browser] ⚠️ PostHog: No API key found. Add NEXT_PUBLIC_POSTHOG_KEY to .env.local and restart the server. (src/components/PostHogProvider.tsx:33:15)
+GEMINI_API_KEY is missing. Using static fallback for study timetable.
+ POST /api/timetable 200 in 1583ms (next.js: 1549ms, proxy.ts: 11ms, application-code: 23ms)
+ GET / 200 in 122ms (next.js: 5ms, proxy.ts: 8ms, application-code: 109ms)
+ GET /follow 200 in 127ms (next.js: 7ms, proxy.ts: 14ms, application-code: 105ms)
+[browser] ⚠️ PostHog: No API key found. Add NEXT_PUBLIC_POSTHOG_KEY to .env.local and restart the server. (src/components/PostHogProvider.tsx:33:15)
+GEMINI_API_KEY is missing. Using static fallback for study timetable.
+ POST /api/timetable 200 in 29ms (next.js: 10ms, proxy.ts: 7ms, application-code: 12ms)
