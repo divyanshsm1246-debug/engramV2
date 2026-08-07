@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/brain", label: "Brain", icon: BrainIcon },
   { href: "/blogs", label: "Blogs", icon: BookIcon },
   { href: "/add", label: "Add", icon: PlusIcon },
+  { href: "/follow", label: "Follow", icon: CompassIcon },
   { href: "/recall", label: "Recall", icon: BoltIcon },
 ];
 
@@ -208,6 +209,15 @@ function BookIcon({ className = "h-5 w-5" }: { className?: string }) {
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+    </svg>
+  );
+}
+
+function CompassIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M15.5 8.5l-2.1 5-5 2.1 2.1-5 5-2.1z" />
     </svg>
   );
 }
