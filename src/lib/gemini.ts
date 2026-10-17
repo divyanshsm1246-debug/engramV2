@@ -378,3 +378,82 @@ Also return an overall report:
 
 Return JSON: { "grades": [{ "index": number, "content": number, "structure": number, "delivery": number, "score": number, "feedback": string, "tips": string[], "improved_answer": string, "correct_answer": string }], "summary": string, "strengths": string[], "focus": string[] }`);
 }
+
+/**
+ * Generate a weather-harmonized study timetable using Gemini.
+ */
+export async function generateStudyTimetable(
+  chapter: string,
+  tags: string[],
+  weather: {
+    temperature: number;
+    apparentTemperature: number;
+    humidity: number;
+    windSpeed: number;
+    weatherCode: number;
+    city: string;
+  } | null
+): Promise<{
+  headline: string;
+  blocks: {
+    time: string;
+    activity: string;
+    description: string;
+    isBreak: boolean;
+    gameRecommendation?: string;
+  }[];
+  motivation: string;
+  gameSuggestions: string[];
+}> {
+  const weatherContext = weather
+    ? `Current weather in ${weather.city}: Temperature is ${weather.temperature}°C (Apparent: ${weather.apparentTemperature}°C), Humidity is ${weather.humidity}%, Wind Speed is ${weather.windSpeed} km/h, Weather Code is ${weather.weatherCode}.`
+    : "No current weather context available (default to a balanced indoor study environment).";
+
+  const prompt = `You are a professional study strategist and memory coach. Generate a highly personalized and beautifully structured study timetable for a student wanting to study:
+Chapter/Topic: "${chapter}"
+Selected tags/categories: ${tags.length > 0 ? tags.join(", ") : "General studies"}
+
+${weatherContext}
+
+Rules for generation:
+1. Dynamically tailor the schedule and its vibe/energy to the current weather context. For example, if it's rainy or cold, recommend a cozy, high-concentration indoor plan with hot tea breaks. If it's warm or sunny, recommend energizing studies with quick outdoor fresh-air walk breaks.
+2. The timetable MUST have 4 to 6 sequential time blocks covering a 4-hour to 6-hour period (e.g. 09:00 AM - 03:00 PM).
+3. The timetable MUST alternate between Study Slots (usually 90 mins) and Break Intervals (usually 15-30 mins) to enforce proper spaced pacing and cognitive rest.
+4. Each block must have:
+   - "time": e.g. "09:00 AM - 10:30 AM"
+   - "activity": Specific title (e.g. "Deep Focus: Core Concepts of ${chapter}" or "Active Recall Break & Hydration")
+   - "description": Concrete actionable advice for that block.
+   - "isBreak": boolean indicating if it's a break.
+   - "gameRecommendation": For break blocks, recommend either "Word Unscramble" or "Math Sprint" as the interactive study break game.
+5. Provide a custom encouraging "headline" and "motivation" string grounded in both the topic and the current weather.
+6. Provide a list of "gameSuggestions" containing the games chosen.
+
+Return a JSON object matching this exact TypeScript structure:
+{
+  "headline": string,
+  "blocks": [
+    {
+      "time": string,
+      "activity": string,
+      "description": string,
+      "isBreak": boolean,
+      "gameRecommendation": "Word Unscramble" | "Math Sprint"
+    }
+  ],
+  "motivation": string,
+  "gameSuggestions": string[]
+}`;
+
+  return generateJson<{
+    headline: string;
+    blocks: {
+      time: string;
+      activity: string;
+      description: string;
+      isBreak: boolean;
+      gameRecommendation?: string;
+    }[];
+    motivation: string;
+    gameSuggestions: string[];
+  }>(prompt);
+}

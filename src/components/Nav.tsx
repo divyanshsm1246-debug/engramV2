@@ -9,6 +9,7 @@ const LINKS = [
   { href: "/", label: "Today", icon: SunIcon },
   { href: "/brain", label: "Brain", icon: BrainIcon },
   { href: "/blogs", label: "Blogs", icon: BookIcon },
+  { href: "/follow", label: "Follow", icon: CompassIcon },
   { href: "/add", label: "Add", icon: PlusIcon },
   { href: "/recall", label: "Recall", icon: BoltIcon },
 ];
@@ -165,6 +166,15 @@ export function BrainIcon({ className = "h-5 w-5" }: { className?: string }) {
       <circle cx="5" cy="18" r="1.6" />
       <circle cx="19" cy="18" r="1.6" />
       <path d="M6.3 7.1l3.9 3.4M17.7 7.1l-3.9 3.4M6.3 16.9l3.9-3.4M17.7 16.9l-3.9-3.4" />
+    </svg>
+  );
+}
+
+function CompassIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
     </svg>
   );
 }
